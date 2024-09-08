@@ -1,0 +1,51 @@
+<div class="search-bar">
+  <nz-input-group [nzSuffix]="suffixIconSearch" style="max-width: 200px;">
+    <input type="text" nz-input placeholder="ค้นหา..." [(ngModel)]="searchText" (ngModelChange)="filterData()" />
+  </nz-input-group>
+</div>
+
+<nz-table
+  [nzData]="filteredData"
+  nzBordered
+  [nzPageSize]="15"
+  nzShowSizeChanger
+  [nzShowQuickJumper]="true"
+  [nzFrontPagination]="true"
+>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>คำนำหน้า</th>
+      <th>ชื่อ</th>
+      <th>นามสกุล</th>
+      <th>หมายเลขบัตรประชาชน</th>
+      <th>เบอร์โทร</th>
+      <th>เพศ</th>
+      <th>วันเกิด</th>
+      <th>ที่อยู่</th>
+      <th>น้ำหนัก</th>
+      <th>ส่วนสูง</th>
+      <th>รอบเอว</th>
+      <th>รหัสผ่าน</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of filteredData; let i = index">
+      <td>{{ data.id }}</td>
+      <td>{{ data.title_name }}</td>
+      <td>{{ data.first_name }}</td>
+      <td>{{ data.last_name }}</td>
+      <td>{{ data.id_card }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.gender }}</td>
+      <td>{{ data.date_birth | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ data.house_number }}, {{ data.village }},{{ data.street }},{{ data.subdistrict }}, {{ data.district }}, {{ data.province }}.</td>
+      <td>{{data.weight}}</td>
+      <td>{{data.height}}</td>
+      <td>{{data.waist}}</td>
+      <td>{{ isHashedPassword(data.password) ? '*******' : data.password }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
+

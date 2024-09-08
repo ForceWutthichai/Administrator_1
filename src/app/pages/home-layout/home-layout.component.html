@@ -1,0 +1,31 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzWidth="200px">
+    <div class="logo">
+      <img src="\assets\image\admmmm.webp" alt="logo" />
+    </div>
+    <ul nz-menu nzMode="inline" class="menu1">
+      <li nz-menu-item (click)="navigateToAdd_admin()">
+        <span nz-icon nzType="user-add"></span> <!-- เปลี่ยนเป็น icon สำหรับเพิ่มเจ้าหน้าที่ -->
+        <span>กำหนดเจ้าหน้าที่</span>
+      </li>
+      <li nz-menu-item (click)="navigateToAdmin_All()">
+        <span nz-icon nzType="radar-chart"></span> <!-- เปลี่ยนเป็น icon ทีมสำหรับเจ้าหน้าที่ทั้งหมด -->
+        <span>เจ้าหน้าที่ทั้งหมด</span>
+      </li>
+      <li nz-menu-item (click)="navigateToUser_all()">
+        <span nz-icon nzType="team"></span> <!-- เปลี่ยนเป็น icon ผู้ใช้สำหรับผู้ใช้ทั้งหมด -->
+        <span>ผู้ใช้ทั้งหมด</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="header">
+
+    </nz-header>
+    <nz-content>
+      <div class="site-layout-background" style="padding: 24px; min-height: 280px;">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

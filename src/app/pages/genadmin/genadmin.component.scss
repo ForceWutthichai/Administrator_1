@@ -1,0 +1,98 @@
+.body {
+  height: 100vh; /* ตั้งให้ความสูงของหน้าเท่ากับความสูงของหน้าจอ */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff; /* เพิ่มการไล่สีเพื่อให้พื้นหลังดูมีมิติ */
+}
+
+.genadmin-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px; /* เพิ่ม padding ให้ดูกว้างขวาง */
+  background: linear-gradient(to right, #a8c1ea, #556a94); /* ไล่สีจากจางไปเข้มจากซ้ายไปขวา */
+  border-radius: 12px; /* ขอบมุมที่โค้งมนมากขึ้น */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* เพิ่มเงาเพื่อให้ดูมีมิติ */
+  transition: all 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเมื่อ hover */
+
+  position: absolute;
+  top: 35%;
+
+  /* การตอบสนองเมื่อ hover */
+  &:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* เงาหนักขึ้นเมื่อ hover */
+    transform: translateY(-5px); /* ขยับขึ้นเล็กน้อยเมื่อ hover */
+  }
+}
+
+.form-group {
+  margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างฟิลด์ให้ดูเป็นระเบียบ */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #1b2a49; /* สีของ label ใช้สีเข้ม */
+  font-size: 16px; /* ขนาดตัวอักษรของ label */
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px; /* เพิ่ม padding ให้ฟิลด์ดูกว้างขวาง */
+  box-sizing: border-box;
+  border-radius: 8px; /* ขอบโค้งมน */
+  border: 2px solid #ccc; /* ขอบหนาเล็กน้อย */
+  transition: border-color 0.3s ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสีขอบ */
+  font-size: 16px; /* ขนาดตัวอักษรของ input */
+
+  &:focus {
+    border-color: #007bff; /* เปลี่ยนสีขอบเมื่อ focus */
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* เพิ่มเงาสีฟ้าเมื่อ focus */
+  }
+}
+
+.btn {
+  width: 100%;
+  padding: 12px; /* เพิ่ม padding เพื่อให้ปุ่มดูใหญ่และชัดเจน */
+  font-size: 18px; /* ขนาดตัวอักษรใหญ่ขึ้น */
+  border: none;
+  border-radius: 8px; /* ขอบปุ่มโค้งมน */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* เพิ่มเอฟเฟกต์เมื่อ hover */
+}
+
+.btn-primary {
+  background-color: #1b2a49; /* เปลี่ยนสีปุ่มเป็นสีหลัก */
+  color: #fff;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #007bff; /* เปลี่ยนสีเมื่อ hover */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2); /* เพิ่มเงาเมื่อ hover */
+  }
+
+  &:active {
+    transform: scale(0.98); /* ลดขนาดลงเล็กน้อยเมื่อคลิก */
+  }
+}
+
+/* ข้อความแสดงข้อผิดพลาด */
+.text-danger {
+  color: #e74c3c; /* สีแดงสดใสสำหรับข้อความแสดงข้อผิดพลาด */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* ข้อความแสดงผลสำเร็จ */
+.alert-success {
+  background-color: #2ecc71; /* สีเขียวสำหรับข้อความสำเร็จ */
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}

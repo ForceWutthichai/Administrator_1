@@ -1,0 +1,44 @@
+<div class="body">
+  <div class="genadmin-container">
+    <form (submit)="onGenerate()">
+      <div class="form-group">
+        <label for="username">ชื่อผู้ใช้</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="form-control"
+          [(ngModel)]="username"
+          required
+        />
+        <!-- แสดงข้อความแสดงข้อผิดพลาดของ username -->
+        <div *ngIf="usernameError" class="text-danger">
+          {{ usernameError }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="id">รหัสผ่าน</label>
+        <input
+          type="text"
+          id="id"
+          name="id"
+          class="form-control"
+          [(ngModel)]="id"
+          required
+        />
+        <!-- แสดงข้อความแสดงข้อผิดพลาดของ password -->
+        <div *ngIf="passwordError" class="text-danger">
+          {{ passwordError }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">สร้าง</button>
+    </form>
+
+    <!-- แสดงข้อความสำเร็จเมื่อสร้างผู้ใช้สำเร็จ -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+  </div>
+</div>

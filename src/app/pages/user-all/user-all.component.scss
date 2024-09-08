@@ -1,0 +1,45 @@
+::ng-deep .ant-modal-title {
+  font-size: 18px; // ขนาดตัวอักษรใหญ่
+  font-weight: bold; // ตัวอักษรหนา
+  text-transform: uppercase; // เปลี่ยนตัวอักษรเป็นตัวพิมพ์ใหญ่ทั้งหมด
+  color: #1b2a49;
+}
+
+::ng-deep .ant-table th {
+  background-color: #1b2a49 !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 12px; // ลดขนาดตัวอักษรของ header
+  padding: 8px 12px; // ลดระยะห่างของเซลล์ใน header
+}
+
+::ng-deep .ant-table td {
+  font-size: 12px; // ลดขนาดตัวอักษรของข้อมูลในตาราง
+  padding: 8px 12px; // ลดระยะห่างของเซลล์ในข้อมูล
+}
+
+::ng-deep .ant-table {
+  font-size: 12px; // ลดขนาดตัวอักษรหลักของตาราง
+  margin-bottom: 20px;
+}
+
+::ng-deep .ant-table-thead > tr > th {
+  font-size: 12px; // ลดขนาดตัวอักษรของส่วนหัว
+}
+
+::ng-deep .ant-pagination-item {
+  font-size: 12px; // ลดขนาดตัวอักษรของการแบ่งหน้า
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-end; // ติดขอบด้านขวาสุด
+  align-items: center;
+  margin-bottom: 16px;
+  padding-right: 16px; // เพิ่ม padding ด้านขวา
+}
+
+
+.nz-input-group {
+  max-width: 200px;
+}
