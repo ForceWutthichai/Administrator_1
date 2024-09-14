@@ -1,17 +1,67 @@
 <div class="body">
   <div class="genadmin-container">
     <form (submit)="onGenerate()">
+      <div class="form-inline-group">
+        <div class="form-group">
+          <label for="title_name">คำนำหน้า</label>
+          <select
+            id="title_name"
+            name="title_name"
+            class="form-control"
+            [(ngModel)]="titleName"
+            required
+          >
+            <option value="">เลือกคำนำหน้า</option>
+            <option value="นาย">นาย</option>
+            <option value="นาง">นาง</option>
+            <option value="นางสาว">นางสาว</option>
+          </select>
+          <div *ngIf="titleNameError" class="text-danger">
+            {{ titleNameError }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="first_name">ชื่อ</label>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            class="form-control"
+            [(ngModel)]="firstName"
+            required
+          />
+          <div *ngIf="firstNameError" class="text-danger">
+            {{ firstNameError }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">นามสกุล</label>
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            class="form-control"
+            [(ngModel)]="lastName"
+            required
+          />
+          <div *ngIf="lastNameError" class="text-danger">
+            {{ lastNameError }}
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="username">ชื่อผู้ใช้</label>
         <input
           type="text"
           id="username"
           name="username"
-          class="form-control"
+          class="form-control small-input"
           [(ngModel)]="username"
           required
         />
-        <!-- แสดงข้อความแสดงข้อผิดพลาดของ username -->
         <div *ngIf="usernameError" class="text-danger">
           {{ usernameError }}
         </div>
@@ -23,11 +73,10 @@
           type="text"
           id="id"
           name="id"
-          class="form-control"
+          class="form-control small-input"
           [(ngModel)]="id"
           required
         />
-        <!-- แสดงข้อความแสดงข้อผิดพลาดของ password -->
         <div *ngIf="passwordError" class="text-danger">
           {{ passwordError }}
         </div>
@@ -36,7 +85,6 @@
       <button type="submit" class="btn btn-primary">สร้าง</button>
     </form>
 
-    <!-- แสดงข้อความสำเร็จเมื่อสร้างผู้ใช้สำเร็จ -->
     <div *ngIf="successMessage" class="alert alert-success mt-3">
       {{ successMessage }}
     </div>

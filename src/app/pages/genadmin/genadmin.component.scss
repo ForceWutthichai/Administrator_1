@@ -1,94 +1,104 @@
 .body {
-  height: 100vh; /* ตั้งให้ความสูงของหน้าเท่ากับความสูงของหน้าจอ */
+  height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff; /* เพิ่มการไล่สีเพื่อให้พื้นหลังดูมีมิติ */
+  background: #fff;
 }
 
 .genadmin-container {
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
-  padding: 30px; /* เพิ่ม padding ให้ดูกว้างขวาง */
-  background: linear-gradient(to right, #a8c1ea, #556a94); /* ไล่สีจากจางไปเข้มจากซ้ายไปขวา */
-  border-radius: 12px; /* ขอบมุมที่โค้งมนมากขึ้น */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* เพิ่มเงาเพื่อให้ดูมีมิติ */
-  transition: all 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเมื่อ hover */
-
+  padding: 30px;
+  background: linear-gradient(to right, #a8c1ea, #556a94);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
   position: absolute;
   top: 35%;
+}
 
-  /* การตอบสนองเมื่อ hover */
-  &:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* เงาหนักขึ้นเมื่อ hover */
-    transform: translateY(-5px); /* ขยับขึ้นเล็กน้อยเมื่อ hover */
-  }
+.form-inline-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-inline-group .form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-inline-group .form-group:first-child {
+  flex: 0.7; /* ขยายขนาดคำนำหน้า */
+}
+
+.form-inline-group .form-group:last-child {
+  margin-right: 0;
 }
 
 .form-group {
-  margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างฟิลด์ให้ดูเป็นระเบียบ */
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: #1b2a49; /* สีของ label ใช้สีเข้ม */
-  font-size: 16px; /* ขนาดตัวอักษรของ label */
+  color: #1b2a49;
+  font-size: 16px;
 }
 
 .form-control {
   width: 100%;
-  padding: 12px; /* เพิ่ม padding ให้ฟิลด์ดูกว้างขวาง */
-  box-sizing: border-box;
-  border-radius: 8px; /* ขอบโค้งมน */
-  border: 2px solid #ccc; /* ขอบหนาเล็กน้อย */
-  transition: border-color 0.3s ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสีขอบ */
-  font-size: 16px; /* ขนาดตัวอักษรของ input */
-
-  &:focus {
-    border-color: #007bff; /* เปลี่ยนสีขอบเมื่อ focus */
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* เพิ่มเงาสีฟ้าเมื่อ focus */
-  }
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-.btn {
-  width: 100%;
-  padding: 12px; /* เพิ่ม padding เพื่อให้ปุ่มดูใหญ่และชัดเจน */
-  font-size: 18px; /* ขนาดตัวอักษรใหญ่ขึ้น */
-  border: none;
-  border-radius: 8px; /* ขอบปุ่มโค้งมน */
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* เพิ่มเอฟเฟกต์เมื่อ hover */
+.form-control.small-input {
+  width: 75%; /* ลดขนาดฟิลด์ชื่อผู้ใช้และรหัสผ่าน */
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
 }
 
 .btn-primary {
-  background-color: #1b2a49; /* เปลี่ยนสีปุ่มเป็นสีหลัก */
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1b2a49;
   color: #fff;
   font-weight: bold;
-
-  &:hover {
-    background-color: #007bff; /* เปลี่ยนสีเมื่อ hover */
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2); /* เพิ่มเงาเมื่อ hover */
-  }
-
-  &:active {
-    transform: scale(0.98); /* ลดขนาดลงเล็กน้อยเมื่อคลิก */
-  }
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ข้อความแสดงข้อผิดพลาด */
+.btn-primary:hover {
+  background-color: #007bff;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
 .text-danger {
-  color: #e74c3c; /* สีแดงสดใสสำหรับข้อความแสดงข้อผิดพลาด */
+  color: #e74c3c;
   font-size: 14px;
   margin-top: 5px;
 }
 
-/* ข้อความแสดงผลสำเร็จ */
 .alert-success {
-  background-color: #2ecc71; /* สีเขียวสำหรับข้อความสำเร็จ */
+  background-color: #2ecc71;
   color: #fff;
   padding: 10px;
   border-radius: 8px;

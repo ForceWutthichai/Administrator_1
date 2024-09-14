@@ -9,6 +9,9 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>คำนำหน้า</th>
+      <th>ชื่อ</th>
+      <th>นามสกุล</th>
       <th>Username</th>
       <th>Password</th>
       <th>Action</th>
@@ -17,6 +20,9 @@
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
       <td>{{ data.id }}</td>
+      <td>{{ data.title_name }}</td>
+      <td>{{ data.first_name }}</td>
+      <td>{{ data.last_name }}</td>
       <td>{{ data.username }}</td>
       <td>{{ data.password }}</td>
       <td>

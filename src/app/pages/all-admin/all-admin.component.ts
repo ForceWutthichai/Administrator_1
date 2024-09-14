@@ -13,7 +13,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./all-admin.component.scss']
 })
 export class AllAdminComponent implements OnInit {
-  listOfData: Array<{ id: number, username: string, password: string }> = [];
+  listOfData: Array<{ id: number, title_name: string, first_name: string, last_name: string, username: string, password: string}> = [];
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +27,11 @@ export class AllAdminComponent implements OnInit {
         next: (response) => {
           this.listOfData = response.map(admin => ({
             id: admin.id,
+            title_name: admin.title_name,
+            first_name: admin.first_name,
+            last_name: admin.last_name,
             username: admin.username,
-            password: admin.plain_password  // แสดงรหัสผ่านจริงจาก plain_password
+            password: admin.plain_password
           }));
         },
         error: (error) => {
