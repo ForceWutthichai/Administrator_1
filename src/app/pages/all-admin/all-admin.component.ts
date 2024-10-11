@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';  // นำเข้า HttpClient
+import { HttpClient } from '@angular/common/http';
 import { NgZorroModule } from '../../../shared/ng-zorro.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-all-admin',
   standalone: true,
-  imports: [NgZorroModule, CommonModule, FormsModule, RouterOutlet],
+  imports: [CommonModule, FormsModule, NzTableModule,NgZorroModule],
   templateUrl: './all-admin.component.html',
   styleUrls: ['./all-admin.component.scss']
 })
 export class AllAdminComponent implements OnInit {
-  listOfData: Array<{ id: number, title_name: string, first_name: string, last_name: string, username: string, password: string}> = [];
+onCurrentPageDataChange($event: readonly { id: number; title_name: string; first_name: string; last_name: string; username: string; password: string; isEditing?: boolean; isPasswordVisible?: boolean; }[]) {
+throw new Error('Method not implemented.');
+}
+  listOfData: Array<{ id: number, title_name: string, first_name: string, last_name: string, username: string, password: string, isEditing?: boolean, isPasswordVisible?: boolean }> = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.fetchAdminData(); // เรียกฟังก์ชันการดึงข้อมูล admin เมื่อคอมโพเนนต์เริ่มต้น
+    this.fetchAdminData();
   }
 
   fetchAdminData(): void {
@@ -31,7 +34,9 @@ export class AllAdminComponent implements OnInit {
             first_name: admin.first_name,
             last_name: admin.last_name,
             username: admin.username,
-            password: admin.plain_password
+            password: admin.plain_password,
+            isEditing: false,
+            isPasswordVisible: false // เพิ่มการควบคุมสถานะการมองเห็นรหัสผ่าน
           }));
         },
         error: (error) => {
@@ -40,12 +45,31 @@ export class AllAdminComponent implements OnInit {
       });
   }
 
-  onCurrentPageDataChange($event: any): void {
-    // จัดการข้อมูลในหน้าปัจจุบันได้ที่นี่ ถ้าต้องการ
+  togglePasswordVisibility(data: any): void {
+    data.isPasswordVisible = !data.isPasswordVisible;
+  }
+
+  onEdit(data: any): void {
+    data.isEditing = true;
+  }
+
+  onSave(data: any): void {
+    this.http.put(`http://localhost:3000/admin/update/${data.id}`, data)
+      .subscribe({
+        next: () => {
+          data.isEditing = false;
+        },
+        error: (error) => {
+          console.error('Error updating admin:', error);
+        }
+      });
+  }
+
+  cancelEdit(data: any): void {
+    data.isEditing = false;
   }
 
   onDelete(id: number): void {
-    // ลบข้อมูล admin ใน frontend
     this.http.delete(`http://localhost:3000/admin/${id}`)
       .subscribe({
         next: () => {
@@ -55,5 +79,11 @@ export class AllAdminComponent implements OnInit {
           console.error('Error deleting admin:', error);
         }
       });
+  }
+
+  // ฟังก์ชันตรวจสอบความถูกต้องของรหัสผ่าน
+  isPasswordValid(password: string): boolean {
+    const passwordPattern = /^[A-Za-z0-9]{4,15}$/;
+    return passwordPattern.test(password);
   }
 }

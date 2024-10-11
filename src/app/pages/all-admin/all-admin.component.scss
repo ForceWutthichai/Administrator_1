@@ -1,3 +1,12 @@
+
+body {
+  font-family: 'Kanit', sans-serif;
+}
+
+/* คุณยังสามารถตั้งค่าเฉพาะบางองค์ประกอบได้ */
+h1, h2, h3 {
+  font-family: 'Kanit', sans-serif;
+}
 .alladmin-container {
   max-width: 600px;
   margin: 20px auto;
@@ -43,6 +52,37 @@
 
 .delete-button:hover {
   background-color: #ff7875;
+  color: white;
+}
+
+.edit-button {
+  background-color: #df8b1d;
+  color: white;
+  margin-right: 2rem;
+}
+
+.edit-button:hover {
+  background-color: #f2aa36;
+  color: white;
+}
+
+.save-button {
+  background-color: #44ea70;
+  color: white;
+}
+
+.save-button:hover {
+  background-color: #75ff85;
+  color: white;
+}
+.cancel-button {
+  background-color: #ea4446;
+  color: white;
+  margin-left: 2rem;
+}
+
+.cancel-button:hover {
+  background-color: #ea4446;
   color: white;
 }
 

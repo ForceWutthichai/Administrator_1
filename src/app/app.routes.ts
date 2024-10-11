@@ -17,7 +17,7 @@ export const routes: Routes = [
       { path: 'addAdmin', component: GenadminComponent },
       { path: 'allAdmin', component: AllAdminComponent },
       { path: 'allUser', component: UserAllComponent },
+
     ]
   },
-
 ];

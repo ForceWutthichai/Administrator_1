@@ -12,23 +12,37 @@
       <th>คำนำหน้า</th>
       <th>ชื่อ</th>
       <th>นามสกุล</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Action</th>
+      <th>ชื่อผู้ใช้</th>
+      <th>รหัสผ่าน</th>
+      <th>จัดการข้อมูล</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of rowSelectionTable.data">
       <td>{{ data.id }}</td>
-      <td>{{ data.title_name }}</td>
-      <td>{{ data.first_name }}</td>
-      <td>{{ data.last_name }}</td>
-      <td>{{ data.username }}</td>
-      <td>{{ data.password }}</td>
+      <td *ngIf="!data.isEditing">{{ data.title_name }}</td>
+      <td *ngIf="data.isEditing"><input [(ngModel)]="data.title_name" /></td>
+
+      <td *ngIf="!data.isEditing">{{ data.first_name }}</td>
+      <td *ngIf="data.isEditing"><input [(ngModel)]="data.first_name" /></td>
+
+      <td *ngIf="!data.isEditing">{{ data.last_name }}</td>
+      <td *ngIf="data.isEditing"><input [(ngModel)]="data.last_name" /></td>
+
+      <td *ngIf="!data.isEditing">{{ data.username }}</td>
+      <td *ngIf="data.isEditing"><input [(ngModel)]="data.username" /></td>
+
+      <td *ngIf="!data.isEditing">{{ data.password }}</td>
+      <td *ngIf="data.isEditing">
+        <input [(ngModel)]="data.password" type="text" />
+        <div *ngIf="!isPasswordValid(data.password)" class="error-message" style="color: red;">รหัสผ่านต้องมีความยาวระหว่าง 4 ถึง 15 ตัวอักษร และเป็นตัวอักษรภาษาอังกฤษหรือตัวเลข</div>
+      </td>
+
       <td>
-        <button nz-button class="delete-button" (click)="onDelete(data.id)">
-          Delete
-        </button>
+        <button *ngIf="!data.isEditing" nz-button nzType="link" class="edit-button" (click)="onEdit(data)"><span nz-icon nzType="edit"></span></button>
+        <button *ngIf="data.isEditing" nz-button nzType="link" class="save-button" (click)="onSave(data)" [disabled]="!isPasswordValid(data.password)"><span nz-icon nzType="save"></span></button>
+        <button *ngIf="data.isEditing" nz-button nzType="link" class="cancel-button" (click)="cancelEdit(data)"><span nz-icon nzType="close"></span></button>
+        <button *ngIf="!data.isEditing" nz-button nzType="link" class="delete-button" (click)="onDelete(data.id)"><span nz-icon nzType="delete"></span></button>
       </td>
     </tr>
   </tbody>
